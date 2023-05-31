@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace DAL.Implementations
 {
-    internal class CategoryDALImpl : ICategoryDAL
+    public class CategoryDALImpl : ICategoryDAL
     {
 
         private NorthWindContext _northWindContext;

@@ -1,5 +1,8 @@
-﻿using DAL.Interfaces;
+﻿using DAL.Implementations;
+using DAL.Interfaces;
+using Entities.Entities;
 using Microsoft.AspNetCore.Mvc;
+using System.Collections.Generic;
 
 namespace BackEnd.Controllers
 {
@@ -14,16 +17,19 @@ namespace BackEnd.Controllers
 
         public CategoryController()
         {
-
+            categoryDAL = new CategoryDALImpl();
         }
 
         #endregion
         #region Consultas
 
         [HttpGet]
-        public IEnumerable<string> Get()
+        public JsonResult Get()
         {
-            return new string[] { "value1", "value2" };
+
+            IEnumerable<Category> categories = categoryDAL.GetAll();
+
+            return new JsonResult(categories);
         }
 
         [HttpGet("{id}")]
